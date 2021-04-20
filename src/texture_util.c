@@ -24,6 +24,30 @@ mlx_xpm_file_to_image(state->mlx, "./textures/regular/heart.xpm",
 &(state->texture[7].endian));
 }
 
+int	check_texture(t_state *state)
+{
+	int i;
+
+	i = 0;
+	while (i < 8)
+	{
+		if (state->texture[i].mlx_img == NULL)
+		{
+			ft_putstr_fd("Error\nBAD TEXTURE\n", 1);
+			destroy_textures(state);
+			destroy_overlay(state);
+			mlx_clear_window(state->mlx, state->win);
+			mlx_destroy_window(state->mlx, state->win);
+			mlx_destroy_display(state->mlx);
+			free_map(state->map);
+			free(state->mlx);
+			exit(1);
+		}
+		i++;
+	}
+	return (1);
+}
+
 void	load_texture(t_state *state)
 {
 	t_overlay	arr[7];
@@ -31,8 +55,8 @@ void	load_texture(t_state *state)
 
 	arr[0] = state->no;
 	arr[1] = state->so;
-	arr[3] = state->ea;
 	arr[2] = state->we;
+	arr[3] = state->ea;
 	arr[4] = state->sp;
 	arr[5] = state->c;
 	arr[6] = state->f;
@@ -40,16 +64,17 @@ void	load_texture(t_state *state)
 	while (++i < 7)
 	{
 		state->texture[i].mlx_img = NULL;
+		state->texture[i].addr = NULL;
 		state->texture[i].mlx_img = mlx_xpm_file_to_image(state->mlx,
 arr[i].address, &(state->texture[i].width), &(state->texture[i].height));
-		if (!state->texture[i].mlx_img)
-			exit_process(state, 1);
-		state->texture[i].addr =
+		if (state->texture[i].mlx_img != NULL)
+			state->texture[i].addr =
 (int*)mlx_get_data_addr(state->texture[i].mlx_img,
 	&(state->texture[i].bpp),
 		&(state->texture[i].line_len), &(state->texture[i].endian));
 	}
 	load_heart_txt(state);
+	check_texture(state);
 }
 
 void	ft_init_texture(t_state *state)

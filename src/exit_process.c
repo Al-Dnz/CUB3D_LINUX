@@ -25,7 +25,8 @@ void	global_free(t_state *state)
 	if (state->map != NULL)
 		free_map(state->map);
 	state->map = NULL;
-	free(state->mlx);
+	if (state->mlx)
+		free(state->mlx);
 	state->mlx = NULL;
 }
 
@@ -49,16 +50,6 @@ void	destroy_overlay(t_state *state)
 
 void	destroy_images(t_state *state)
 {
-	int i;
-
-	i = 0;
-	while (i < 7)
-	{
-		if (state->texture[i].mlx_img != NULL)
-			mlx_destroy_image(state->mlx, state->texture[i++].mlx_img);
-	}
-	if (state->texture[7].mlx_img != NULL)
-		mlx_destroy_image(state->mlx, state->texture[7].mlx_img);
 	if (state->img.mlx_img != NULL)
 		mlx_destroy_image(state->mlx, state->img.mlx_img);
 	if (state->img2.mlx_img != NULL)
@@ -70,14 +61,26 @@ void	destroy_images(t_state *state)
 	state->mlx = NULL;
 }
 
+void	destroy_textures(t_state *state)
+{
+	int i;
+
+	i = -1;
+	while (++i < 8)
+	{
+		if (state->texture[i].mlx_img)
+			mlx_destroy_image(state->mlx, state->texture[i].mlx_img);
+	}
+}
 void	exit_process(t_state *state, t_bool error)
 {
+	destroy_textures(state);
+	destroy_overlay(state);
 	destroy_images(state);
 	global_free(state);
-	destroy_overlay(state);
 	if (error)
 		ft_putstr_fd("Error\n", 1);
 	else
 		ft_putstr_fd("CLEAN_EXIT !\n", 1);
-	exit(error);
+	exit(0);
 }

@@ -319,6 +319,7 @@ void	save(t_state *state);
 void	draw_life(t_state *state);
 
 void	global_free(t_state *state);
+void	destroy_textures(t_state *state);
 void	destroy_images(t_state *state);
 void	destroy_overlay(t_state *state);
 void	exit_process(t_state *state, t_bool error);
