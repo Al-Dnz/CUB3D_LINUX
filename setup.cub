@@ -1,0 +1,18 @@
+R 1000 800
+
+S ./textures/barrel.xpm
+
+NO ./textures/redstone.xpm
+SO ./textures/bluestone.xpm
+EA ./textures/purplestone.xpm
+WE ./textures/eagle.xpm 
+
+
+C ./textures/skybox.xpm
+F ./textures/greystone.xpm
+
+11111111111111
+10000000000001
+102200000W0001
+10000000000001
+11111111111111
