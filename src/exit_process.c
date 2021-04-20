@@ -6,7 +6,7 @@
 /*   By: adenhez <adenhez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 18:22:53 by adenhez           #+#    #+#             */
-/*   Updated: 2021/04/18 22:09:59 by adenhez          ###   ########.fr       */
+/*   Updated: 2021/04/20 17:28:43 by adenhez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,12 @@ void	destroy_images(t_state *state)
 		if (state->texture[i].mlx_img != NULL)
 			mlx_destroy_image(state->mlx, state->texture[i++].mlx_img);
 	}
-	mlx_destroy_image(state->mlx, state->texture[7].mlx_img);
-	mlx_destroy_image(state->mlx, state->img.mlx_img);
-	mlx_destroy_image(state->mlx, state->img2.mlx_img);
+	if (state->texture[7].mlx_img != NULL)
+		mlx_destroy_image(state->mlx, state->texture[7].mlx_img);
+	if (state->img.mlx_img != NULL)
+		mlx_destroy_image(state->mlx, state->img.mlx_img);
+	if (state->img2.mlx_img != NULL)
+		mlx_destroy_image(state->mlx, state->img2.mlx_img);
 	mlx_clear_window(state->mlx, state->win);
 	mlx_destroy_window(state->mlx, state->win);
 	mlx_destroy_display(state->mlx);
