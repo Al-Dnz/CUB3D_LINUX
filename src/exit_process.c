@@ -6,7 +6,7 @@
 /*   By: adenhez <adenhez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 18:22:53 by adenhez           #+#    #+#             */
-/*   Updated: 2021/04/20 17:28:43 by adenhez          ###   ########.fr       */
+/*   Updated: 2021/04/20 19:35:41 by adenhez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	destroy_textures(t_state *state)
 			mlx_destroy_image(state->mlx, state->texture[i].mlx_img);
 	}
 }
+
 void	exit_process(t_state *state, t_bool error)
 {
 	destroy_textures(state);

@@ -6,7 +6,7 @@
 /*   By: adenhez <adenhez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 17:32:03 by adenhez           #+#    #+#             */
-/*   Updated: 2021/04/18 23:01:45 by adenhez          ###   ########.fr       */
+/*   Updated: 2021/04/20 19:42:08 by adenhez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -341,6 +341,7 @@ void	set_color(t_state *state, t_overlay *overlay, char *str);
 void	load_heart_txt(t_state *state);
 void	load_texture(t_state *state);
 void	ft_init_texture(t_state *state);
+int		check_texture(t_state *state);
 
 void	map_dimension(t_state *state, char *str);
 int		map_line_authentification(char *str);

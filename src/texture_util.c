@@ -6,7 +6,7 @@
 /*   By: adenhez <adenhez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 22:04:42 by adenhez           #+#    #+#             */
-/*   Updated: 2021/04/20 17:35:43 by adenhez          ###   ########.fr       */
+/*   Updated: 2021/04/20 19:37:12 by adenhez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,30 +22,6 @@ mlx_xpm_file_to_image(state->mlx, "./textures/regular/heart.xpm",
 (int*)mlx_get_data_addr(state->texture[7].mlx_img,
 &(state->texture[7].bpp), &(state->texture[7].line_len),
 &(state->texture[7].endian));
-}
-
-int	check_texture(t_state *state)
-{
-	int i;
-
-	i = 0;
-	while (i < 8)
-	{
-		if (state->texture[i].mlx_img == NULL)
-		{
-			ft_putstr_fd("Error\nBAD TEXTURE\n", 1);
-			destroy_textures(state);
-			destroy_overlay(state);
-			mlx_clear_window(state->mlx, state->win);
-			mlx_destroy_window(state->mlx, state->win);
-			mlx_destroy_display(state->mlx);
-			free_map(state->map);
-			free(state->mlx);
-			exit(1);
-		}
-		i++;
-	}
-	return (1);
 }
 
 void	load_texture(t_state *state)

@@ -13,6 +13,7 @@ SRCS =	main.c \
 		graphic_engine.c \
 		texture_handler.c \
 		texture_util.c \
+		texture_util2.c \
 		sprite_handler.c \
 		sprite_util.c \
 		save_handler.c \
