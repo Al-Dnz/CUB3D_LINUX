@@ -6,7 +6,7 @@
 /*   By: adenhez <adenhez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 22:04:42 by adenhez           #+#    #+#             */
-/*   Updated: 2021/04/16 15:36:07 by adenhez          ###   ########.fr       */
+/*   Updated: 2021/04/20 17:17:44 by adenhez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	load_texture(t_state *state)
 		state->texture[i].mlx_img = NULL;
 		state->texture[i].mlx_img = mlx_xpm_file_to_image(state->mlx,
 arr[i].address, &(state->texture[i].width), &(state->texture[i].height));
+		if (state->texture[i].mlx_img == NULL)
+			exit_process(state, 1);
 		state->texture[i].addr =
 (int*)mlx_get_data_addr(state->texture[i].mlx_img,
 	&(state->texture[i].bpp),
