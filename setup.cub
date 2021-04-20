@@ -1,12 +1,11 @@
 R 1000 800
 
-S ./textures/barrel.xpm
-
 NO ./textures/redstone.xpm
 SO ./textures/bluestone.xpm
 EA ./textures/purplestone.xpm
 WE ./textures/eagle.xpm 
 
+S ./textures/barrel.xpm
 
 C ./textures/skybox.xpm
 F ./textures/greystone.xpm
